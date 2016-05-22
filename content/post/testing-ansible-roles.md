@@ -2,7 +2,6 @@
 title: "Testing your infrastructure code"
 description: "How to test Ansible roles (and any other piece of infrastrcture code)"
 date: "2016-06-01"
-draft: true
 categories:
   - "ansible"
 ---
