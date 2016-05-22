@@ -2,7 +2,6 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-
 HUGO=$(which hugo)
 if ! [ -x "$HUGO" ] ; then
 	export GOPATH=$HOME/go
@@ -11,3 +10,5 @@ if ! [ -x "$HUGO" ] ; then
 fi
 
 ${HUGO}
+
+ncftpput -R -v -u ${FTP_USER} -p ${FTP_PASSWORD}  ${FTP_HOST} / ${DIR}/public/*
