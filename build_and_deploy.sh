@@ -2,12 +2,12 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-	apt-get install hugo 
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-	brew install hugo
+
+HUGO=$(which hugo)
+if ! [ -x "$HUGO" ] ; then
+	export GOPATH=$HOME/go
+	go get -v github.com/spf13/hugo
+	HUGO=${GOPATH}/bin/hugo
 fi
 
-
-rm -rf "${DIR}/public"
-hugo
+${HUGO}
