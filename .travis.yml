@@ -1,10 +1,11 @@
 language:
-    - go 
     - bash
 
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y ncftp
+  - wget https://github.com/spf13/hugo/releases/download/v0.18.1/hugo_0.18.1-64bit.deb
+  - sudo dpkg -i hugo_0.18.1-64bit.deb
 
 install: true
 
