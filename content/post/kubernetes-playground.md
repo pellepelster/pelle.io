@@ -119,7 +119,7 @@ In order to deal with individual host subnetting and to make services available 
 
 ## Lets start ##
 
-Enough talking, lets gets our hands dirty. First of all we fire up Vagrant and provision out master host:
+Enough talking, lets gets our hands dirty. First of all clone the kubernetes-playground git repository from [https://github.com/pellepelster/kubernetes-playground.git](https://github.com/pellepelster/kubernetes-playground.git) and fire up Vagrant to provision the master host:
 
 ```
 $ vagrant up
