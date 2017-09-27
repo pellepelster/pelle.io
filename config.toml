@@ -1,4 +1,4 @@
-baseurl = "http://pelle.io/"
+baseurl = "https://pelle.io/"
 languageCode = "en-us"
 title = "pelle.io"
 canonifyurls = true
