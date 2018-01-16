@@ -1,0 +1,25 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+set -eu -o pipefail
+
+function task_deploy {
+  ncftpput -R -v -u ${FTP_USER} -p ${FTP_PASSWORD}  ${FTP_HOST} / ${DIR}/public/*
+}
+
+function task_build {
+  docker run -it --rm -v $(pwd):/hugo solidnerd/hugo
+}
+
+function task_usage {
+  echo "Usage: $0 build | deploy"
+  exit 1
+}
+
+CMD=${1:-}
+shift || true
+case ${CMD} in
+  build) task_build ;;
+  deploy) task_deploy ;;
+  *) task_usage ;;
+esac
