@@ -1,5 +1,3 @@
-sudo: required
-
 env:
   global:
     secure: "i2PeD1gjiUkBLXB8aWZZn8lr+sU2uSvE129NhCRSmdKTxIrWbDr3k2GqNewjngEpPAqmIPSHHhQbGJfVM5apGh478CGO5g6ND32RGDOp6J9dJhR8ODrgsVqd5nZOBrVx64ZmOGff5hk77mvKN3GGO4wBcuJVlEqVWN19ikUocmhZ9SkYK5CS5EUfBFNPvU+2dbV9762enprtGhIXXpnAsSZY9Fdh6cwmrcl9Jdl43ivuysksa6YhxC9r9TijCuEfYfttBlu1LKAAn7wv0pF1MFuzJbL5QOUdSAYSBn9BOPaZaOCQtGYVlAleq1XhQKjYkl++Ts+YSI662SwjtUkqZPIsrTUJoelEraCnLLy0bVOBN1FRig2EDvdiW5lSdwvdBHBnwazo0XesOLuLwIadiyEt8yz5/ug+R/Fr1gdTdINlXau0K9ag/tdpEvg5HVSpHzQb9bZjazPUkW+qMVFg0TwBYQLt5L1799+uEn9cri3/tkOpe9Yp4rNXYb3hGpkqxg0j0WkAOSvFZLdtiyM0SZsNMxHjSV9zvLVUug9t5Qdq8TNgsBB4Ner9JaFg1qN80+5j5jHfIr1X1dv20Njr4mrMopmYNJB+LmOOF4Uz8xI+MrT0wQdT0cZtfbL3MLExfiR0Ttq3+BUmI8sicSi6VzXMy9yFyfIlaYPHGopgVkE="
@@ -7,9 +5,6 @@ env:
 
 language:
   - bash
-
-services:
-  - docker
 
 before_install:
   - sudo apt-get install ncftp
