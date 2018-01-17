@@ -4,7 +4,7 @@ set -eu -o pipefail
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function task_deploy {
-  ncftpput -R -v -u ${FTP_USER:-$(pass 'pelle.io/ftp/userid')} -p ${FTP_PASSWORD:-$(pass 'pelle.io/ftp/password')} ftp.pelle.io / ${DIR}/public/*
+  ncftpput -R -v -u ${FTP_USERNAME:-$(pass 'pelle.io/ftp/userid')} -p ${FTP_PASSWORD:-$(pass 'pelle.io/ftp/password')} ftp.pelle.io / ${DIR}/public/*
 }
 
 function task_build {
