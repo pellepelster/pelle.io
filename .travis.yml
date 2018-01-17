@@ -9,7 +9,7 @@ language:
 before_install:
   - sudo apt-get install ncftp
   - wget https://github.com/gohugoio/hugo/releases/download/v0.32.4/hugo_0.32.4_Linux-64bit.deb
-  - sudo dpkg -i hugo_0.18.1-64bit.deb
+  - sudo dpkg -i hugo_0.32.4_Linux-64bit.deb
 
 script:
   - bash run build
