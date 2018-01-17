@@ -8,9 +8,8 @@ function task_deploy {
 }
 
 function task_build {
-  echo ${DIR}
-  pwd
-  docker run -it --rm -v ${DIR}:/hugo solidnerd/hugo
+  cd ${DIR}
+  hugo
 }
 
 function task_usage {
