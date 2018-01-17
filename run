@@ -8,7 +8,7 @@ function task_deploy {
 }
 
 function task_build {
-  docker run -it --rm -v $(pwd):/hugo solidnerd/hugo
+  docker run -it --rm -v ${DIR}:/hugo solidnerd/hugo
 }
 
 function task_usage {
