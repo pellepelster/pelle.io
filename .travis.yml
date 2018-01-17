@@ -15,5 +15,5 @@ before_install:
   - sudo apt-get install ncftp
 
 script:
-  - bash build
-  - bash deploy
+  - bash run build
+  - bash run deploy
