@@ -1,18 +1,13 @@
 baseURL = "http://pelle.io/"
 languageCode = "en-us"
 title = "pelle.io"
-theme = "hallo"
+theme = "pelle.io"
+
+[Params]
+  logo = "img/portrait.jpg"
 
 [Author]
     name = "pelle"
-
-[params]
-    [[params.links]]
-        icon = "github"
-        title = "Github"
-        url = "https://github.com/pellepelster"
-    [[params.links]]
-        iconset = "fas"
-        icon = "envelope"
-        title = "E-mail"
-        url = "mailto:pelle@pelle.io"        
+    email = "pelle@pelle.io"
+    github = "pellepelster"
+    
