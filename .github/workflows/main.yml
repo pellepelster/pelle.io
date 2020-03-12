@@ -18,9 +18,9 @@ jobs:
   
     - name: upload public artifacts
       uses: actions/upload-artifact@v1
-        with:
-          name: public
-          path: site/public
+      with:
+        name: public
+        path: site/public
           
   deploy:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
 
     - name: download public artifacts
       uses: actions/download-artifact@v1
-        with:
+      with:
         name: public
 
     - name: deploy
