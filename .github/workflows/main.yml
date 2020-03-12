@@ -34,4 +34,7 @@ jobs:
         name: public
 
     - name: deploy
+      env:
+        super_secret: ${{ secrets.FTP_PASSWORD }}
+        super_secret: ${{ secrets.FTP_USERNAME }}
       run: ./do

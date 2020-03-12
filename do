@@ -13,7 +13,7 @@ HUGO_BIN="${BIN_DIR}/hugo"
 
 
 function task_deploy {
-  ncftpput -R -v -u ${FTP_USERNAME:-$(pass 'pelle.io/ftp/userid')} -p ${FTP_PASSWORD:-$(pass 'pelle.io/ftp/password')} ftp.pelle.io / ${DIR}/public/*
+  ncftpput -R -v -u ${FTP_USERNAME:-$(pass 'pelle.io/ftp/userid')} -p ${FTP_PASSWORD:-$(pass 'pelle.io/ftp/password')} ftp.pelle.io / public/*
 }
 
 function ensure_hugo {
