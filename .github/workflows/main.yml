@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,25 +16,8 @@ jobs:
     - name: build
       run: ./do build
   
-    - name: upload public artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: public
-        path: site/public
-          
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: download public artifacts
-      uses: actions/download-artifact@v1
-      with:
-        name: public
-
     - name: deploy
       env:
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-      run: ./do
+      run: ./do deploy
