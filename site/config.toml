@@ -5,6 +5,7 @@ theme = "pelle.io"
 
 [Params]
   logo = "img/portrait.jpg"
+  selfHosted = true
 
 [Author]
     name = "pelle"
