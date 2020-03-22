@@ -1,4 +1,4 @@
-baseURL = "http://pelle.io/"
+baseURL = "https://pelle.io/"
 languageCode = "en-us"
 title = "pelle.io"
 theme = "pelle.io"
