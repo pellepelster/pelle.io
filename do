@@ -27,12 +27,20 @@ function ensure_hugo {
   fi
 }
 
-function task_build {
+function execute_hugo {
   ensure_hugo
   (
     cd "${DIR}/site"
-    ${HUGO_BIN}
+    "${HUGO_BIN}" "$@"
   )
+}
+
+function task_build {
+  execute_hugo
+}
+
+function task_serve {
+  execute_hugo "serve"
 }
 
 function task_usage {
@@ -45,5 +53,6 @@ shift || true
 case ${CMD} in
   build) task_build ;;
   deploy) task_deploy ;;
+  serve) task_serve ;;
   *) task_usage ;;
 esac
