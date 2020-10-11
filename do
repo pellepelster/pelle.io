@@ -37,6 +37,7 @@ function execute_hugo {
 
 function task_build {
   execute_hugo
+  cp .htaccess site/public/
 }
 
 function task_serve {
