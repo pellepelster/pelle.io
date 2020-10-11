@@ -104,7 +104,7 @@ snex --source ./POST.md  -snippets ./  -template-file hugo.template
 
 
 **hugo.template**
-```
+```markdown
 { { if .IsFullFile } }
 { {< github repository="pellepelster/vault-ssh-ca" file="{{.Filename}}"  >} }{{.Filename}}{ {< /github >} }
 {{ else }}
