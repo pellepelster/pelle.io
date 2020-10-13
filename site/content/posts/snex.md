@@ -6,7 +6,6 @@ draft: false
 
 This SNippet EXtractor (snex) utility helps you with the task of keeping code samples inside of documentation in sync with real world code from your sources. The issues this solves is that source examples in  documentation tends to get outdated very quick. By pulling the source directly from a working project you can make sure the source examples used in you docs are always up to date.
 
-
 <!--more-->
 
 `snex` consumes a list of files line by line, and looks for lines containing snippet start- and end-markers. Then it crawls through all documentation files (e.g. a list of markdown files in a folder) and replaces all references to code snippets by the actual code. To keep things simple and language agnostic it does not care for comment markers (which differ between languages) and just looks for snippet start- and end-markers.
