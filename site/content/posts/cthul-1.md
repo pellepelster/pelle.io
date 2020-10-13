@@ -25,7 +25,7 @@ ctuhl_ensure_terraform "/bin"
 
 ## `ctuhl_download_and_verify_checksum ${url} ${target_file} ${checksum}`
 
-Downloads the file given by `${url}` to `${target_file}` and verfies if the downloaded file has the checksum `${checksum}`. If a file is already present at `${target}` download is skipped.
+Downloads the file given by `${url}` to `${target_file}` and verifies if the downloaded file has the checksum `${checksum}`. If a file is already present at `${target}` download is skipped.
 
 *example*
 ```
@@ -43,7 +43,7 @@ ctuhl_extract_file_to_directory "/downloads/file.zip" "/tmp/data"
 
 ## `ctuhl_ensure_hashicorp ${product} ${version} ${checksum} ${bin_dir}`
 
-Generic wrapper for downloading Hasicorp tools built around the convention that product distributions are available at https://releases.hashicorp.com/`${product}`/`${version}`/`${product}`_`${product}`_linux_amd64.zip and the downloaded zip contains an executable named `${product}` which will be written to `${bin_dir}`.
+Generic wrapper for downloading HasiCorp tools built around the convention that product distributions are available at https://releases.hashicorp.com/`${product}`/`${version}`/`${product}`_`${product}`_linux_amd64.zip and the downloaded zip contains an executable named `${product}` which will be written to `${bin_dir}`.
 
 *example*
 ```
@@ -54,7 +54,7 @@ ctuhl_ensure_hashicorp "terraform" "0.13.4" "a92df4a151d390144040de5d18351301e59
 
 ## `ctuhl_ensure_terraform ${bin_dir} ${version} ${checksum}`
 
-Downloads terraform `${version}` (download will be checked against `${checksum}`) to `${bin_dir}` If `${version}` and `${checksum}` is ommited a recent-ish version will be downloaded.
+Downloads terraform `${version}` (download will be checked against `${checksum}`) to `${bin_dir}`. If `${version}` and `${checksum}` is ommited a recent-ish version will be downloaded.
 
 *example*
 ```
@@ -67,5 +67,16 @@ ctuhl_ensure_terraform "/bin"
 ctuhl_ensure_terraform "/tmp" "0.12.23" "78fd53c0fffd657ee0ab5decac604b0dea2e6c0d4199a9f27db53f081d831a45"
 
 /bin/terraform [...]
+```
 
+## `ctuhl_ensure_consul ${bin_dir} ${version} ${checksum}`
+
+Downloads Consul `${version}` (download will be checked against `${checksum}`) to `${bin_dir}`. If `${version}` and `${checksum}` is ommited a recent-ish version will be downloaded.
+
+*example*
+```
+# download the default version
+ctuhl_ensure_consul "/bin"
+
+/bin/consul [...]
 ```
