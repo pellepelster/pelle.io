@@ -11,11 +11,6 @@ HUGO_URL="https://github.com/gohugoio/hugo/releases/download/v0.67.0/hugo_0.67.0
 HUGO_CHECKSUM="49679173372c13886a214c0b61e32a91a511a8460c13f8c4ae1d0cb71afacf00"
 HUGO_BIN="${BIN_DIR}/hugo"
 
-
-function task_deploy {
-  ncftpput -R -v -u ${FTP_USERNAME:-$(pass 'pelle.io/ftp/userid')} -p ${FTP_PASSWORD:-$(pass 'pelle.io/ftp/password')} ftp.pelle.io / site/public/.*
-}
-
 function ensure_hugo {
   mkdir -p "${BIN_DIR}" || true
   mkdir -p "${TMP_DIR}" || true
@@ -53,7 +48,6 @@ CMD=${1:-}
 shift || true
 case ${CMD} in
   build) task_build ;;
-  deploy) task_deploy ;;
   serve) task_serve ;;
   *) task_usage ;;
 esac
