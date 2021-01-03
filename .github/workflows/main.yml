@@ -24,6 +24,5 @@ jobs:
   
     - name: deploy
       env:
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
       run: ./do deploy
