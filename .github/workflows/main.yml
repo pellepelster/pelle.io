@@ -16,9 +16,6 @@ jobs:
       with:
         submodules: true
 
-    - name: install ncftp
-      run: sudo apt-get install ncftp
-
     - name: build
       run: ./do build
   
