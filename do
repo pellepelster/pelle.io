@@ -36,7 +36,7 @@ function task_deploy {
 
   echo "put -R ${DIR}/site/public/*" > deploy_batch
   echo "exit" >> deploy_batch
-  sftp  -b deploy_batch -i deploy_ssh deploy@pelle.io
+  sftp -o StrictHostKeyChecking=no -b deploy_batch -i deploy_ssh deploy@pelle.io
 }
  
 function task_build {
