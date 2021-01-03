@@ -30,6 +30,15 @@ function execute_hugo {
   )
 }
 
+function task_deploy {
+  echo "${DEPLOY_SSH_KEY}" > deploy_ssh
+  chmod 600 deploy_ssh
+
+  echo "put -R ${DIR}/site/public/*" > deploy_batch
+  echo "exit" >> deploy_batch
+  sftp  -b deploy_batch -i deploy_ssh deploy@pelle.io
+}
+ 
 function task_build {
   execute_hugo
   cp -v "${DIR}/.htaccess" "${DIR}/site/public/"
@@ -47,6 +56,7 @@ function task_usage {
 CMD=${1:-}
 shift || true
 case ${CMD} in
+  deploy) task_deploy ;;
   build) task_build ;;
   serve) task_serve ;;
   *) task_usage ;;
