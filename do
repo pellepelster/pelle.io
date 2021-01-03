@@ -34,7 +34,7 @@ function task_deploy {
   echo "${DEPLOY_SSH_KEY}" > deploy_ssh
   chmod 600 deploy_ssh
 
-  echo "put -R ${DIR}/site/public/*" > deploy_batch
+  echo "put -R ${DIR}/site/public/* www" > deploy_batch
   echo "exit" >> deploy_batch
   sftp -o StrictHostKeyChecking=no -b deploy_batch -i deploy_ssh deploy@pelle.io
 }
