@@ -40,12 +40,6 @@
   translation: "Toggle navigation"
 - id: languageSwitcherLabel
   translation: "Language"
-- id: gcseLabelShort
-  translation: "Search"
-- id: gcseLabelLong
-  translation: "Search {{ .Site.Title }}"
-- id: gcseClose
-  translation: "Close"
 
 # Staticman
 - id: noComment
@@ -62,12 +56,6 @@
   translation: "Your email address"
 - id: yourWebsite
   translation: "You website"
-
-# Delayed Disqus
-- id: show
-  translation: "Show"
-- id: comments
-  translation: "comments" 
 
 # Related posts
 - id: seeAlso
