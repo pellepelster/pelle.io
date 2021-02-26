@@ -1,10 +1,19 @@
-  {{ if eq .Type "page" }}
-    {{ partial "page_meta.html" . }}
-  {{ end }}
+{{ if not .Params.hide_about_me }}
+<div class="float">
+  <a href="/pages/about/" class="btn btn-lg btn-success">Let‘s work together!</a>
+</div>
+{{ end }}
+
+{{ if eq .Type "page" }}
+  {{ partial "page_meta.html" . }}
+{{ end }}
+
 <footer>
   <div class="container">
+
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{ if not .Params.hide_social }}
         <ul class="list-inline text-center footer-links">
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
             {{- if isset $.Site.Author .id }}
@@ -30,6 +39,7 @@
           </li>
           {{ end }}
         </ul>
+        {{ end }}
         <p class="credits copyright text-muted">
           {{ if .Site.Author.name }}
             {{ if .Site.Author.website }}
@@ -45,16 +55,6 @@
           {{ else }}
             {{ .Site.LastChange.Format "2006" }}
           {{ end }}
-
-          {{ if .Site.Title }}
-            &nbsp;&bull;&nbsp;
-            <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
-          {{ end }}
-        </p>
-        <!-- Please don't remove this, keep my open source work credited :) -->
-        <p class="credits theme-by text-muted">
-          {{ i18n "poweredBy" . | safeHTML }}
-          {{ if $.GitInfo }}&nbsp;&bull;&nbsp;[<a href="{{ .Site.Params.commit }}{{ .GitInfo.Hash }}">{{ substr .GitInfo.Hash 0 8 }}</a>]{{ end }}
         </p>
       </div>
     </div>
