@@ -49,15 +49,15 @@ function task_serve {
 }
 
 function task_usage {
-  echo "Usage: $0 build | deploy"
+  echo "Usage: $0 build | serve | deploy"
   exit 1
 }
 
 CMD=${1:-}
 shift || true
 case ${CMD} in
-  deploy) task_deploy ;;
   build) task_build ;;
   serve) task_serve ;;
+  deploy) task_deploy ;;
   *) task_usage ;;
 esac
