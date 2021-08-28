@@ -1,4 +1,12 @@
+---
+title: "JooQ In-Memory DSL generation with Liquibase and Gradle"
+date: 2021-08-22T20:00:00+01:00
+draft: false
+---
+
 For projects with roots in the Java ecosystem the combination if [Liquibase](https://www.liquibase.org/) and [Jooq](https://www.jooq.org/) is a popular approach on creating and evolving database schemas, as well as interacting with the created data afterwards.
+
+<!--more-->
 
 While Liquibase gives you a powerful language to define your schema in a database vendor agnostic way:
 
@@ -128,7 +136,7 @@ Now by calling:
 
 <!-- /snippet:gradle_jooq_run -->
 
-we can start the database creation and DSL generation process, without the need of complicated (and especially in a CI error prone) database setup.
+we can start the database creation and DSL generation process, without the need of complicated (and especially in a CI error-prone) database setup.
 
 
 ```
@@ -156,3 +164,5 @@ INFO: ChangeSet src/main/resources/db/changelog/db.changelog-master.yaml::1::pel
 Aug 28, 2021 8:57:47 PM liquibase.logging.core.Slf4jLogger info
 INFO: Successfully released change log lock
 ```
+
+This tasks needs to be re-run every time the Liquibase schema is updates, to keep the Jooq DSL in sync with the database content.
