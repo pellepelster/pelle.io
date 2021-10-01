@@ -13,7 +13,7 @@ The first iteration contains some shell functions to around retrieving and uncom
 
 ## Usage
 
-The shell utilities are designed to be used by sourcing the appropiate files, for example
+The shell utilities are designed to be used by sourcing the appropriate files, for example
 
 ```
 #!/usr/bin/env bash
