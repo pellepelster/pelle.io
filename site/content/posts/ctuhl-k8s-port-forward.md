@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes port forward"
-date: 2021-09-291T20:00:00+01:00
+date: 2021-09-29T20:00:00+01:00
 draft: false
 ---
 
