@@ -7,8 +7,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BIN_DIR="${DIR}/.bin"
 TMP_DIR="${DIR}/.tmp"
 
-HUGO_URL="https://github.com/gohugoio/hugo/releases/download/v0.67.0/hugo_0.67.0_Linux-64bit.tar.gz"
-HUGO_CHECKSUM="49679173372c13886a214c0b61e32a91a511a8460c13f8c4ae1d0cb71afacf00"
+HUGO_URL="https://github.com/gohugoio/hugo/releases/download/v0.88.1/hugo_0.88.1_Linux-64bit.tar.gz"
+HUGO_CHECKSUM="80cbb0b12a03838a1f053849c9d3accad1f328a8ea824294d57f9a0c6f89620b"
 HUGO_BIN="${BIN_DIR}/hugo"
 
 function ensure_hugo {
