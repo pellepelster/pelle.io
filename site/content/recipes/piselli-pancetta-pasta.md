@@ -28,7 +28,7 @@ ingredients:
   - name: Butter
 ---
 
-![piselli-pancetta-pasta](/img/recipes/piselli-pancetta-pasta.png)
+![piselli-pancetta-pasta](/img/recipes/piselli-pancetta-pasta.jpg)
 
 * Nudeln in einem großen Topf reichlich Salzwasser (Mittelmeer-Style) kochen
 * In Streifen geschnitten Speck in einer Pfanne mit Butter und Öl goldbraun bis knusprig braten
