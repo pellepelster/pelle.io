@@ -110,9 +110,9 @@ day  ─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─
                         │         │                       │ │
                    tm2->tm_day    │                       │ tm1->tm_day
                         │         │                       │ │
-                        │─────────│───── -19 ─────────────│─│
+                        │─────────────── -19 ───────────────│
                         │         │                       │ │
-                        │─── a ───│────────── b ──────────│c|
+                        │─── a ───│────────── b ──────────│c│
 ```
 
 looking at it it becomes pretty apearant that we want `a` + `b` as the days difference without the `c` part. Because the `c` part is a full month we can just add it to `tm->tm_mday` and adjust `tm->tm_month` afterwards by decreasing it by one. Via `day_tab`, which looks like this:
