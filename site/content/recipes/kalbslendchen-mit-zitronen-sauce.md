@@ -13,9 +13,12 @@ ingredients:
   amount: 1
   unit: Stück
 - name: Gnocci
-  amount: 800
+  amount: ~1000
   unit: g
-- name: Kresse
+- name: Crème fraîche
+  amount: 2
+  unit: Becher
+- name: Kresse (optional)
   amount: 1
   unit: Schachtel
 - name: Zitronenpfeffer
