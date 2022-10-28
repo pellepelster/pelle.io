@@ -4,24 +4,25 @@ title = "pelle.io"
 theme = "pelle.io"
 
 [Params]
-    logo = "img/portrait.jpg"
-    selfHosted = true
+logo = "img/portrait.jpg"
+selfHosted = true
+showRelatedPosts = true
 
 [Author]
-    name = "pelle"
-    email = "pelle@pelle.io"
-    github = "pellepelster"
-    phone = "+49 176 238 170 01"
+name = "pelle"
+email = "pelle@pelle.io"
+github = "pellepelster"
+phone = "+49 176 238 170 01"
 
 [[menu.main]]
-    name = "Blog"
-    url = "/posts/"
-    weight = 1
+name = "Blog"
+url = "/posts/"
+weight = 1
 
 [[menu.main]]
-    name = "About Me"
-    url = "/pages/about/"
-    weight = 3
+name = "About Me"
+url = "/pages/about/"
+weight = 3
 
 [markup.goldmark.renderer]
-    unsafe= true   
+unsafe = true

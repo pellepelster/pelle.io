@@ -9,7 +9,7 @@ Although for example [AWS RDS](https://aws.amazon.com/rds/) is an excellent and 
 
 For the re-occurring tasks of my daily work (and maintaining databases is definitely one of them) I invested some time to create a tested, easy to configure and/or reusable version of that particular task. The collection is called [Solidblocks](https://github.com/pellepelster/solidblocks), its documentation can be found here [https://pellepelster.github.io/solidblocks/](https://pellepelster.github.io/solidblocks/)
 
-This particular post highlights an easy to user PostgreSQL docker container, that fits the need for a quick to deploy PostgreSQL database with an adequate backup solution for data safety. 
+This particular post highlights an easy to use PostgreSQL docker container, that fits the need for a quick to deploy PostgreSQL database with an adequate backup solution for data safety. 
 You can read the [documentation](https://pellepelster.github.io/solidblocks/rds/) with all the nitty-gritty details, here a quick walk-through to give you an impression:
 
 **Start the database**
@@ -55,4 +55,3 @@ $ docker run \
 -v "$(pwd)/postgres_data:/storage/data" \
 pellepelster/solidblocks-rds-postgresql:v0.0.60
 ```
-
