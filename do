@@ -4,29 +4,50 @@ set -eu -o pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-BIN_DIR="${DIR}/.bin"
-TMP_DIR="${DIR}/.tmp"
+function bootstrap_solidblocks() {
+  local default_dir="$(cd "$(dirname "$0")" ; pwd -P)"
+  local install_dir="${1:-${default_dir}/.solidblocks-shell}"
 
-HUGO_URL="https://github.com/gohugoio/hugo/releases/download/v0.88.1/hugo_0.88.1_Linux-64bit.tar.gz"
-HUGO_CHECKSUM="80cbb0b12a03838a1f053849c9d3accad1f328a8ea824294d57f9a0c6f89620b"
-HUGO_BIN="${BIN_DIR}/hugo"
+  SOLIDBLOCKS_SHELL_VERSION="v0.0.65"
+  SOLIDBLOCKS_SHELL_CHECKSUM="b24f0a60d5d7e713b8706f6b898a5467d6ac768542b86ac079e9d9a7fde9ed01"
 
-function ensure_hugo {
-  mkdir -p "${BIN_DIR}" || true
-  mkdir -p "${TMP_DIR}" || true
+  local temp_file="$(mktemp)"
 
-  if [[ ! -f "${HUGO_BIN}"  ]]; then
-    curl "${HUGO_URL}" -L --output "${TMP_DIR}/hugo.tar.gz"
-    echo "${HUGO_CHECKSUM} ${TMP_DIR}/hugo.tar.gz" | sha256sum --check --status
-    tar -C "${BIN_DIR}" -xvf "${TMP_DIR}/hugo.tar.gz"
-  fi
+  mkdir -p "${install_dir}"
+  curl -L "https://github.com/pellepelster/solidblocks/releases/download/${SOLIDBLOCKS_SHELL_VERSION}/solidblocks-shell-${SOLIDBLOCKS_SHELL_VERSION}.zip" > "${temp_file}"
+  echo "${SOLIDBLOCKS_SHELL_CHECKSUM}  ${temp_file}" | sha256sum -c
+  cd "${install_dir}"
+  unzip -o -j "${temp_file}" -d "${install_dir}"
+  rm -f "${temp_file}"
 }
 
-function execute_hugo {
-  ensure_hugo
+function ensure_environment() {
+
+  if [[ ! -d "${DIR}/.solidblocks-shell" ]]; then
+    echo "environment is not bootstrapped, please run ./do bootstrap first"
+    exit 1
+  fi
+
+  source "${DIR}/.solidblocks-shell/log.sh"
+  source "${DIR}/.solidblocks-shell/utils.sh"
+  source "${DIR}/.solidblocks-shell/pass.sh"
+  source "${DIR}/.solidblocks-shell/colors.sh"
+  source "${DIR}/.solidblocks-shell/software.sh"
+
+  software_set_export_path
+}
+
+function task_bootstrap() {
+  bootstrap_solidblocks
+  ensure_environment
+
+  software_ensure_hugo
+}
+
+function hugo_wrapper {
   (
     cd "${DIR}/site"
-    "${HUGO_BIN}" "$@"
+    hugo "$@"
   )
 }
 
@@ -40,12 +61,12 @@ function task_deploy {
 }
  
 function task_build {
-  execute_hugo
+  hugo_wrapper
   cp -v "${DIR}/.htaccess" "${DIR}/site/public/"
 }
 
 function task_serve {
-  execute_hugo "serve"
+  hugo_wrapper "serve"
 }
 
 function task_usage {
@@ -53,11 +74,20 @@ function task_usage {
   exit 1
 }
 
-CMD=${1:-}
+ARG=${1:-}
 shift || true
-case ${CMD} in
+
+# if we see the boostrap command assume solidshell is not yet initialized and skip environment setup
+case "${ARG}" in
+  bootstrap) ;;
+  *) ensure_environment ;;
+esac
+
+case ${ARG} in
+  bootstrap) task_bootstrap "$@" ;;
   build) task_build ;;
   serve) task_serve ;;
   deploy) task_deploy ;;
   *) task_usage ;;
 esac
+

@@ -16,9 +16,12 @@ jobs:
       with:
         submodules: true
 
+    - name: bootstrap
+      run: ./do bootstrap
+
     - name: build
       run: ./do build
-  
+
     - name: deploy
       env:
         DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
