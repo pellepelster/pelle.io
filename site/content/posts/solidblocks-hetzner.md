@@ -7,12 +7,12 @@ tags: ["hetzner", "solidblocks"]
 
 After years of shifting workloads to the big cloud providers like AWS or Azure, I am now more often confronted with situations where the deployed cloud infrastructures become unmanageable cost and complexity wise.
 A nice, fast and inexpensive alternative for smaller projects is the [Hetzner Cloud](https://cloud.hetzner.com) featuring all basic needed building blocks like VMs, block devices, networking, firewalls and load-balancers.
-One major drawback with Hetzner is, that there is no pendant to the AWS RDS service family, meaning we have to start self-manage our state (and backups) again.
-For not too complex setups, building up the previously released [Solidblocks RDS](https://pellepelster.github.io/solidblocks/rds/) component, Solidblokcs now comes with a Terraform module for Hetzner clouds, providing a fully fledged PostreSQL database with automatic backup and restore capabilities. For more details please visit the [documentation](https://pellepelster.github.io/solidblocks/hetzner/) or have a quick look at the example below, showcasing the most important features.
+One major drawback with Hetzner is though, that there is no pendant to the AWS RDS service family, meaning we have to start to self-manage our state (and backups) again.
+For not too complex setups, building up on the previously released [Solidblocks RDS](https://pellepelster.github.io/solidblocks/rds/) component, Solidblocks now comes with a Terraform module for Hetzner clouds, providing a fully fledged PostreSQL database with automatic backup and restore capabilities. For more details please visit the [documentation](https://pellepelster.github.io/solidblocks/hetzner/) or have a quick look at the example below, showcasing the most important features.
 
-
+**main.tf**
 ```shell
-    resource "aws_s3_bucket" "backup" {
+resource "aws_s3_bucket" "backup" {
     bucket        = "test-rds-postgresql-backup"
     force_destroy = true
 }
@@ -49,3 +49,24 @@ module "rds-postgresql" {
     backup_s3_secret_key = var.backup_s3_secret_key
 }
 ```
+
+**variables.tf**
+```shell
+variable "hetzner_location" {
+  default = "nbg1"
+}
+
+variable "aws_region" {
+  default = "eu-central-1"
+}
+
+
+variable "backup_s3_access_key" {
+  type = string
+}
+
+variable "backup_s3_secret_key" {
+  type = string
+}
+```
+
