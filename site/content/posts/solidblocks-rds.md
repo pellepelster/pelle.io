@@ -14,9 +14,9 @@ You can read the [documentation](https://pellepelster.github.io/solidblocks/rds/
 
 **Start the database**
 ```shell
-$ mkdir postgres_{data,backup} && sudo chown 10000:10000 postgres_{data,backup}
+mkdir postgres_{data,backup} && sudo chown 10000:10000 postgres_{data,backup}
 
-$ docker run \
+docker run \
     --name instance1 \
     -e DB_INSTANCE_NAME=instance1 \
     -e DB_DATABASE_db1=database1 \
@@ -25,33 +25,34 @@ $ docker run \
     -e DB_BACKUP_LOCAL=1 \
     -v "$(pwd)/postgres_backup:/storage/backup" \
     -v "$(pwd)/postgres_data:/storage/data" \
-    pellepelster/solidblocks-rds-postgresql:v0.0.60
+    pellepelster/solidblocks-rds-postgresql:v0.1.15
 ```
 
 **Trigger a full backup**
 
 ```shell
-$ docker exec instance1 /rds/bin/backup-full.sh
+docker exec instance1 /rds/bin/backup-full.sh
 ```
 
 **Stop database and remove data dir**
 ```shell
-$ docker rm --force instance1
-$ sudo rm -rf postgres_data
-$ mkdir postgres_data && sudo chown 10000:10000 postgres_data
+docker rm --force instance1
+sudo rm -rf postgres_data
+mkdir postgres_data && sudo chown 10000:10000 postgres_data
 ```
 
 **Start database again**
 It will recover from the latest available backup
+
 ```shell
-$ docker run \
---name instance1 \
--e DB_INSTANCE_NAME=instance1 \
--e DB_DATABASE_db1=database1 \
--e DB_USERNAME_db1=user1 \
--e DB_PASSWORD_db1=password1 \
--e DB_BACKUP_LOCAL=1 \
--v "$(pwd)/postgres_backup:/storage/backup" \
--v "$(pwd)/postgres_data:/storage/data" \
-pellepelster/solidblocks-rds-postgresql:v0.0.60
+docker run \
+    --name instance1 \
+    -e DB_INSTANCE_NAME=instance1 \
+    -e DB_DATABASE_db1=database1 \
+    -e DB_USERNAME_db1=user1 \
+    -e DB_PASSWORD_db1=password1 \
+    -e DB_BACKUP_LOCAL=1 \
+    -v "$(pwd)/postgres_backup:/storage/backup" \
+    -v "$(pwd)/postgres_data:/storage/data" \
+    pellepelster/solidblocks-rds-postgresql:v0.1.15
 ```
