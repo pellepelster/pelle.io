@@ -41,22 +41,6 @@
 - id: languageSwitcherLabel
   translation: "Sprache"
 
-# Staticman
-- id: noComment
-  translation: "Kein Kommentar"
-- id: oneComment
-  translation: "Kommentar"
-- id: moreComment
-  translation: "Kommentare"
-- id: useMarkdown
-  translation: "Sie können Markdown-Syntax verwenden"
-- id: yourName
-  translation: "Ihr Name"
-- id: yourEmail
-  translation: "Ihre Emailadresse"
-- id: yourWebsite
-  translation: "Ihre Website"
-
 # Related posts
 - id: seeAlso
   translation: "Siehe auch"

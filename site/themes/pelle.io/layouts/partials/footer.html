@@ -61,11 +61,8 @@
   </div>
 </footer>
 
-<!--
-<script src="{{ "js/katex.min.js" | absURL }}"></script>
--->
+
 <script src="{{ "js/jquery.min.js" | absURL }}"></script>
-<script src="{{ "js/auto-render.min.js" | absURL }}"></script>
 <script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
 
 <script src="{{ "js/main.js" | absURL }}"></script>
@@ -74,10 +71,5 @@
 <script> hljs.initHighlightingOnLoad(); </script>
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script>
 {{- end -}}
-<script> renderMathInElement(document.body); </script>
-
-<script src="{{ "js/photoswipe.min.js" | absURL }}"></script>
-<script src="{{ "js/photoswipe-ui-default.min.js" | absURL }}"></script>
-<script src="{{ "js/load-photoswipe.js" | absURL }}"></script>
 
 {{- partial "footer_custom.html" . }}
