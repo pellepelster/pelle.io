@@ -45,14 +45,11 @@
 <!-- Links and stylesheets -->
   <link rel="alternate" href="{{ "index.xml" | absLangURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
 
-  <!--
-  <link rel="stylesheet" href="{{ "css/katex.min.css" | absURL }}" />
-  -->
-
   <link rel="stylesheet" href="{{ "fontawesome/css/all.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}" />
 
   <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/tabs.css" | absURL }}" />
 
   <link href="{{ "css/fonts.css" | absURL }}" />
 
@@ -65,6 +62,9 @@
   
   <link rel="stylesheet" href="{{ "css/photoswipe.min.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/photoswipe.default-skin.min.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/photoswipe.default-skin.min.css" | absURL }}" />
+
+  <script type="text/javascript" src="{{ "js/tabs.js" | absURL }}"></script>
 
 {{- partial "head_custom.html" . }}
 {{ template "_internal/google_analytics_async.html" . }}

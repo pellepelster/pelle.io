@@ -4,22 +4,27 @@ set -eu -o pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+SOLIDBLOCKS_SHELL_VERSION="v0.2.5"
+SOLIDBLOCKS_SHELL_CHECKSUM="d07eb3250f83ae545236fdd915feca602bdb9b683140f2db8782eab29c9b2c48"
+
+# self contained function for initial Solidblocks bootstrapping
 function bootstrap_solidblocks() {
   local default_dir="$(cd "$(dirname "$0")" ; pwd -P)"
   local install_dir="${1:-${default_dir}/.solidblocks-shell}"
 
-  SOLIDBLOCKS_SHELL_VERSION="v0.0.65"
-  SOLIDBLOCKS_SHELL_CHECKSUM="b24f0a60d5d7e713b8706f6b898a5467d6ac768542b86ac079e9d9a7fde9ed01"
-
   local temp_file="$(mktemp)"
 
-  mkdir -p "${install_dir}"
-  curl -L "https://github.com/pellepelster/solidblocks/releases/download/${SOLIDBLOCKS_SHELL_VERSION}/solidblocks-shell-${SOLIDBLOCKS_SHELL_VERSION}.zip" > "${temp_file}"
+  curl -v -L "${SOLIDBLOCKS_BASE_URL:-https://github.com}/pellepelster/solidblocks/releases/download/${SOLIDBLOCKS_SHELL_VERSION}/solidblocks-shell-${SOLIDBLOCKS_SHELL_VERSION}.zip" > "${temp_file}"
   echo "${SOLIDBLOCKS_SHELL_CHECKSUM}  ${temp_file}" | sha256sum -c
-  cd "${install_dir}"
-  unzip -o -j "${temp_file}" -d "${install_dir}"
-  rm -f "${temp_file}"
+
+  mkdir -p "${install_dir}" || true
+  (
+      cd "${install_dir}"
+      unzip -o -j "${temp_file}" -d "${install_dir}"
+      rm -f "${temp_file}"
+  )
 }
+
 
 function ensure_environment() {
 
@@ -31,7 +36,7 @@ function ensure_environment() {
   source "${DIR}/.solidblocks-shell/log.sh"
   source "${DIR}/.solidblocks-shell/utils.sh"
   source "${DIR}/.solidblocks-shell/pass.sh"
-  source "${DIR}/.solidblocks-shell/colors.sh"
+  source "${DIR}/.solidblocks-shell/text.sh"
   source "${DIR}/.solidblocks-shell/software.sh"
 
   software_set_export_path

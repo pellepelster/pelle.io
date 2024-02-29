@@ -3,3 +3,5 @@
 .tmp/
 site/public/
 .idea
+.solidblocks-shell/
+site/.hugo_build.lock

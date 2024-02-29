@@ -1,14 +1,22 @@
 ---
 title: "Solidblocks Shell Software"
 date: 2023-01-19T19:00:00
-draft: false
-tags: ["pdx"]
+draft: true
+tags: [ "pdx" ]
 ---
 
-Referring to a previous post about [developer experience](/posts/project-developer-experience-do-file/), a re-occurring need when writing automation and/or glue code for software or infrastructure projects is to ensure all required software is installed on the execution machine. 
-A lot of software exists to achieve this goal, e.g. [NixOS](https://nixos.org/) or [asdf](https://asdf-vm.com/), but sometimes a little bash can be enough to get the same results. [Solidblocks Shell Software](https://pellepelster.github.io/solidblocks/shell/software/) provides a small set of easy to use functions to install commonly used software for infrastructure projects.
+Referring to a previous post about [developer experience](/posts/project-developer-experience-do-file/), a re-occurring
+need when writing automation and/or glue code for software or infrastructure projects is to ensure all required software
+is installed on the execution machine.
+A lot of software exists to achieve this goal, e.g. [NixOS](https://nixos.org/) or [asdf](https://asdf-vm.com/), but
+sometimes a little bash can be enough to get the same
+results. [Solidblocks Shell Software](https://pellepelster.github.io/solidblocks/shell/software/) provides a small set
+of easy to use functions to install commonly used software for infrastructure projects.
 
-The basic building blocks are the `software_ensure_*` functions like `software_ensure_terraform` which ensures that a certain software package is downloaded to a local `.bin` dir. Those software packages can then be prepended to the `$PATH` by the `software_set_export_path` function. For more details see [Solidblocks Shell Software](https://pellepelster.github.io/solidblocks/shell/software/)
+The basic building blocks are the `software_ensure_*` functions like `software_ensure_terraform` which ensures that a
+certain software package is downloaded to a local `.bin` dir. Those software packages can then be prepended to
+the `$PATH` by the `software_set_export_path` function. For more details
+see [Solidblocks Shell Software](https://pellepelster.github.io/solidblocks/shell/software/)
 
 The example below show a skeleton `do-file` leveraging this functionality
 
