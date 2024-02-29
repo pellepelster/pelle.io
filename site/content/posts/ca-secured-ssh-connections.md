@@ -10,26 +10,26 @@ This post will show you how to use vault, signed SSH keys and some bash glue cod
 
 # Preface
 
-This tutorial assume that you are already familiar with basic bash programming and the involved tools namely terraform, vault and SSH.
+This tutorial assume that you are already familiar with basic bash programming and the involved tools namely terraform, 
+vault and SSH. All needed sources for this tutorial are available at [https://github.com/pellepelster/vault-ssh-ca](https://github.com/pellepelster/vault-ssh-ca).
 
-All needed sources for this tutorial are availabe at [https://github.com/pellepelster/ctuhl.git](https://github.com/pellepelster/ctuhl.git) inside the folder `vault`.
-
-```
-git clone https://github.com/pellepelster/ctuhl.git
-cd vault
+```shell
+git clone https://github.com/pellepelster/vault-ssh-ca
 ```
 
 To be able to follow all examples you have to build some prerequisites first, which can be simply done by calling
 
-```
+```shell
 ./do prepare
 ```
 
-Also there are helper tasks to execute all the needed tooling and to start/stop needed containers, so we can fully focus on the functionality and do not have to fiddle around with tooling issues. If you get stuck you can call `./do clean` at any time to reset everything to its initial state. 
+Also, there are helper tasks to execute all the needed tooling and to start/stop needed containers, so we can fully 
+focus on the functionality and do not have to fiddle around with tooling issues. If you get stuck you can call 
+`./do clean` at any time to reset everything to its initial state. 
 
 Commands that you can execute are show like this
 
-```
+```shell
 ./do some-command
 ```
 
@@ -66,20 +66,20 @@ AuthorizedKeysFile %h/.ssh/authorized_keys
 
 you can start the container by running
 
-```
+```shell
 ./do start-ssh-with-authorized-keys
 ```
 
 As during the docker build of this container we baked in the previously generated SSH key of Bob and added it to the `~/authorized_keys` of the `admin-ssh-user´, we can log into this container by
 
 
-```
+```shell
 ssh -p 1022 -i ssh-keys/bob_id_rsa admin-ssh-user@localhost
 ```
 
 The first thing we notice is that on first connect, we have to verify the identity of the SSH server which is typically done by verifying the cryptographic fingerprints
 
-```
+```shell
 The authenticity of host '[localhost]:1022 ([::1]:1022)' can't be established.
 ECDSA key fingerprint is SHA256:c99kZespMBlc4yBnz0owUXb85l/hmuqBrpIc4rY0qOU.
 Are you sure you want to continue connecting (yes/no)? 
@@ -92,14 +92,14 @@ But lets step back for a small bit and contemplate what just happened: We tried 
 The even bigger problem starts when a new instance of a VM is started. As the identity of the SSH server is generated when the SSH server is configured and in a cloud environment this is done on every machine boot, the next time you start a new server a new identity is generated and thus the servers fingerprint changes.
 We can emulate this by restarting the docker container
 
-```
+```shell
 ./do stop-ssh-with-authorized-keys
 ./do start-ssh-with-authorized-keys
 ```
 
-and try to login again
+and try to log in again
 
-```
+```shell
 ssh -p 1022 -i ssh-keys/bob_rsa admin-ssh-user@localhost
 ```
 
@@ -127,7 +127,7 @@ Host key verification failed.
 The next problem becomes obvious when we need to allow a new user to access the `admin-ssh-user` of our machine. Because the setup relies on the fact that the users public key is previously known to the machines, we would need to add the ssh public key of the new user to all machines `~/authorized_keys` files.
 So in order to allow Alice to login as well via
 
-```
+```shell
 ssh -p 1022 -i ssh-keys/alice_id_rsa admin-ssh-user@localhost
 ```
 
@@ -148,15 +148,15 @@ Beside its functionality as secret store vault has builtin capabilities to mange
 
 ## Creating trusted host keys
 
-Lets first look at the direction from the SSH client to the host.  
+Let's first look at the direction from the SSH client to the host.  
 
 To mimic the way a browser verifies a hosts authenticity we would need the public key of a CA locally, and this CA has to sign the SSH servers host key. By signing the host key, the signer indicates to any third party that the signer trusts the signee. This enables any party who trusts the signer to extend her trust to the signee as well.
 
-We are gonna use a vault server in development mode, so we don't have to fiddle around with establishing a secure relation between the different parties using vault tokens. It is thou important to note that the relation between vault and all entities using vault is now an important part of our trust chain. If this chain can't be trusted, everything that is derived from it (like in the current example a signed host key) can't be trusted as well. For more information about vault tokens look [here](https://www.vaultproject.io/docs/concepts/tokens/).
+We are going to use a vault server in development mode, so we don't have to fiddle around with establishing a secure relation between the different parties using vault tokens. It is thou important to note that the relation between vault and all entities using vault is now an important part of our trust chain. If this chain can't be trusted, everything that is derived from it (like in the current example a signed host key) can't be trusted as well. For more information about vault tokens look [here](https://www.vaultproject.io/docs/concepts/tokens/).
 
 First thing we have to do, is starting the vault server that will act as our CA and trust anchor
 
-```
+```shell
 ./do start-vault
 ```
 
@@ -198,7 +198,7 @@ resource "vault_ssh_secret_backend_role" "host_ssh_role" {
 
 we can then apply the configuration by running terraform against the running vault instance
 
-```
+```shell
 ./do terraform-apply-ssh-with-signed-hostkey
 ```
 
@@ -262,7 +262,7 @@ HostCertificate /ssh/ssh_host_rsa_key_signed.pub
 
 And we are good to go to start the improved SSH server
 
-```
+```shell
 ./do start-ssh-with-signed-hostkey
 ```
 
@@ -279,11 +279,11 @@ Now to be finally able to connect we have to make the CAs public key known to ou
 
 If we run SSH using Bobs key and our special `known_hosts` now
 
-```
+```shell
 ssh -o UserKnownHostsFile=./known_hosts  -p 2022 -i ssh-keys/bob_id_rsa admin-ssh-user@localhost
 ```
 
-It seamlessy connects to the server and the authenticity is ensured by a trusted CA.
+It seamlessly connects to the server and the authenticity is ensured by a trusted CA.
 
 ## Creating trusted user keys
 
@@ -394,7 +394,7 @@ The signing process it also pretty much the same, except this time we can leave 
 
 If we tell our SSH client to also use the signed SSH key, alongside with the normal key, Alice is allowed to log into our SSH server
 
-```
+```shell
 ssh -o UserKnownHostsFile=./known_hosts  -p 3022 -i ssh-keys alice_id_rsa_signed.pub -i ssh-keys/alice_id_rsa admin-ssh-user@localhost
 ```
 
@@ -402,11 +402,12 @@ ssh -o UserKnownHostsFile=./known_hosts  -p 3022 -i ssh-keys alice_id_rsa_signed
 
 ### Vault Authentication
 
-In our example we used a static root token everywhere. This is of course not how vault is intended to be used. In a real scenario any user taking advantage of vault, like in our example signing user keys in order to log in, would need to authenticate to vault first to obtain a token that could be used for the signing process. Due to vaults large set of [authentication backends](https://www.vaultproject.io/docs/auth/) this enables a lot of interesting usecases, like for example enforcing a user login with two-factor authentication before being able to log in via SSH.
+In our example we used a static root token everywhere. This is of course not how vault is intended to be used. In a real scenario any user taking advantage of vault, like in our example signing user keys in order to log in, would need to authenticate to vault first to obtain a token that could be used for the signing process. Due to vaults large set of [authentication backends](https://www.vaultproject.io/docs/auth/) this enables a lot of interesting use cases, like for example enforcing a user login with two-factor authentication before being able to log in via SSH.
 
 ### Signed certificate lifetimes
 
-Another interesting feature is, that the lifetime of the signed user certificates can be limited, by adding a TTL to the roles configuration
+Another interesting feature is, that the lifetime of the signed user certificates can be limited, by adding a TTL to 
+the roles configuration
 
 {{< highlight go "" >}}
 [..]
@@ -414,4 +415,5 @@ ttl = "1m0s"
 [..]
 {{< / highlight >}}
 
-this enables togehter with the various authentication backends to short lived SSH user certificates that expire after a certain ammount of time.
+this enables together with the various authentication backends to short-lived SSH user certificates that expire after 
+a certain amount of time.

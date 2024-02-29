@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes port forward"
 date: 2021-09-29T20:00:00+01:00
-draft: false
+draft: true
 ---
 
 Occasionally when developing and deploying services to Kubernetes you may encounter a situation where you need to access an API that your service relies on from your local machine. Depending on your network setup or internal company policies you may realize: "S**t, that API is only accessible from within the Kubernetes cluster". 
