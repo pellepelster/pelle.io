@@ -8,7 +8,9 @@ hide_social: true
 
 I am a Freelance Software Developer and Infrastructure Specialist. 
 
-I can help you to continuously deliver software to the cloud, using test-first methodologies. With my experience from the transition of on-premise datacenters to cloud based solutions I can help you to migrate existing products and services to the cloud, or back.   
+I can help you to continuously deliver software to the cloud or on-premise, using test-first methodologies. With my experience from the transition of on-premise datacenters to cloud based solutions I can help you to migrate existing products and services to the cloud, or back.
+
+I enjoy diving into existing systems and to stabilize and overhaul the software and it's infrastructure. 
 
 {{% fa-title-h2 Ecosystems fa-leaf %}}
 
