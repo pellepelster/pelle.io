@@ -12,15 +12,73 @@ I can help you to continuously deliver software to the cloud, using test-first m
 
 ## Ecosystems
 
-Java (Spring Boot, Dropwizard), Ruby, Python, JavaScript, Go
+Java (Spring Boot, Dropwizard), Kotlin, Python, JavaScript, Go, Typescript
 
 ## Technologies
 
-Linux, Ansible, Salt, Terraform, Consul, Vault, Docker, Vagrant, AWS, IntelliJ, TCP/IP, DNS, HTTP, REST
+Linux, Ansible, Salt, Terraform, git, subversion, HiveMQ, VerneMQ, Helm, Consul, Vault, Nomad, Docker, Vagrant, Kibana, Grafana,
+ELK, GoCD, Jenkins, Gitlab, Github Actions, Concourse, PostgreSQL, Mysql, MariaDB, Keycloak
+
+## Networking & Protocols
+
+TCP/IP, DNS, DHCP, CanOpen, MQTT, Cisco, TLS, OpenVPN, IpSec, Nagios/Zabbix/OpenNMS
+
+## Clouds
+
+AWS, Azure, Hetzner, GCP
 
 ## Methodologies
 
-Continuous Delivery, DevOps, Infrastructure as Code, Test Driven Development
+Test Driven Development, Continuous Delivery/Integration, Pair Programming, Kanban, Model Driven Development, UML, SCRUM,
+DevOps, Infrastructure as Code, Clean Code
+
+## Project History
+
+### Cloud migration AWS to Azure
+
+* Initial assessment and technical workshops for cloud migration requirements and planing
+* Planing and implementation of cloud-agnostic Kubernetes cloud platform components
+* Technology workshops and knowledge transfer for Kubernetes and helm
+* Evaluation and introduction of infrastructure tests
+* Assessment and advisory for IDM solutions
+* Live migration of VerneMQ MQTT broker cluster
+
+### Maintenance and operation of IoT Platform for Connected Machines
+
+* Feature development and day-to-day platform operations including on-call duties
+* Drive technical evolution of the IoT platform
+* Ensure technical alignment with internal and external parties
+* Mentoring and development of graduates
+* Evaluation of new technologies
+* Technical integration into the company IT landscape
+* Ensure and oversee secure and stable operations
+
+### Implement Keycloak IDM solution
+
+* Replace custom built IDM with Keycloak}
+* Extend Keycloak with custom Salesforce backed user provider}
+* Implement production ready deployment and monitoring}
+* Periodic security assessment and threat modelling}
+* React and resolve production incidents}
+
+### Extending billing platform and SAP integration
+
+* Overhaul billing process for Cloud products
+* Replace manual billing process with automated SAP data export
+* Load testing and sizing evaluation
+* Implement and extend monitoring for billing process KPIs
+* Migration of billing data from TimescaleDB to Elasticsearch
+* Stabilization of data retrival and report generation
+
+### Building a custom Multi-Cloud Frontend for OpenStack and Kubernetes
+
+* Story refinement with Stakeholders
+* Evaluation of technical solutions
+* Feature development
+* Code reviews
+* Level 3 operational support and bugfixing
+* Build and test process optimizations
+
 
 ## Let's work together
 
