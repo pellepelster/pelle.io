@@ -10,29 +10,29 @@ I am a Freelance Software Developer and Infrastructure Specialist.
 
 I can help you to continuously deliver software to the cloud, using test-first methodologies. With my experience from the transition of on-premise datacenters to cloud based solutions I can help you to migrate existing products and services to the cloud, or back.   
 
-## Ecosystems
+{{% fa-title-h2 Ecosystems fa-leaf %}}
 
 Java (Spring Boot, Dropwizard), Kotlin, Python, JavaScript, Go, Typescript
 
-## Technologies
+{{% fa-title-h2 Technologies fa-microchip %}}
 
 Linux, Ansible, Salt, Terraform, git, subversion, HiveMQ, VerneMQ, Helm, Consul, Vault, Nomad, Docker, Vagrant, Kibana, Grafana,
 ELK, GoCD, Jenkins, Gitlab, Github Actions, Concourse, PostgreSQL, Mysql, MariaDB, Keycloak
 
-## Networking & Protocols
+{{% fa-title-h2 "Networking & Protocols" fa-network-wired %}}
 
 TCP/IP, DNS, DHCP, CanOpen, MQTT, Cisco, TLS, OpenVPN, IpSec, Nagios/Zabbix/OpenNMS
 
-## Clouds
+{{% fa-title-h2 "Clouds" fa-cloud %}}
 
 AWS, Azure, Hetzner, GCP
 
-## Methodologies
+{{% fa-title-h2 "Methodologies" fa-people-group %}}
 
 Test Driven Development, Continuous Delivery/Integration, Pair Programming, Kanban, Model Driven Development, UML, SCRUM,
 DevOps, Infrastructure as Code, Clean Code
 
-## Project History
+{{% fa-title-h2 "Project History" fa-clock-rotate-left %}}
 
 ### Cloud migration AWS to Azure
 
@@ -60,6 +60,14 @@ DevOps, Infrastructure as Code, Clean Code
 * Implement production ready deployment and monitoring}
 * Periodic security assessment and threat modelling}
 * React and resolve production incidents}
+
+### Rollout Infrastructure for Covid19 Portal (non-EU)
+
+* Evaluation of hosting provider
+* Implementation of Ansible roles
+* Disaster recovery and security firedrills
+* Documentation and handover of operations
+
 
 ### Extending billing platform and SAP integration
 
