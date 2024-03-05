@@ -2,7 +2,7 @@
 title: "Solidblocks Shell Software"
 date: 2023-01-19T19:00:00
 draft: true
-tags: [ "pdx" ]
+tags: [ "dx" ]
 ---
 
 Referring to a previous post about [developer experience](/posts/project-developer-experience-do-file/), a re-occurring

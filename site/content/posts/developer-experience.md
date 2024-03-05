@@ -2,7 +2,9 @@
 title: "Project Developer Experience"
 date: 2022-10-26T20:00:00+01:00
 draft: false
-tags: [ "pdx" ]
+aliases:
+  - project-developer-experience
+tags: [ "dx" ]
 ---
 
 A personal pet peeve of mine when joining a new project or environment is the overall developer experience (DX). Under
@@ -16,4 +18,4 @@ provide some heavily opinionated approaches on how to solve them.
 > Some of the following example make use of a library available at https://pellepelster.github.io/solidblocks/ where I
 > implemented some of the more common patterns.
 
-Look here for all [posts](/tags/pdx/) of the series or via the list below.
+Look here for all [posts](/tags/dx/) of the series or via the list below.

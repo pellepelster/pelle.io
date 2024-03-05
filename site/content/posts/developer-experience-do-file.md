@@ -1,13 +1,15 @@
 ---
 title: "The do file"
-subtitle: Project Developer Experience
+subtitle: Developer Experience
 date: 2024-02-29T12:00:00+01:00
 draft: false
-tags: [ "pdx" ]
+aliases:
+  - project-developer-experience-do-file
+tags: [ "dx" ]
 ---
 
 > This post is a part of my series about project developer experience, for the other posts have a look
-> [here](/tags/pdx/). A fully functional example with all snippets from this post that can be used as a template is
+> [here](/tags/dx/). A fully functional example with all snippets from this post that can be used as a template is
 > available [here](https://github.com/pellepelster/solidblocks/blob/main/solidblocks-do/single-project-bash/do), more
 > ready to use functions for writing do files are part of my open source project
 > [Solidblocks](https://github.com/pellepelster/solidblocks).

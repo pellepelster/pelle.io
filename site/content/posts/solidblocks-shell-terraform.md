@@ -2,7 +2,7 @@
 title: "Solidblocks Shell Terraform"
 date: 2023-03-01T19:00:00
 draft: true
-tags: [ "pdx" ]
+tags: [ "dx" ]
 ---
 
 A common problem when provisioning infrastructure with [Terraform](https://www.terraform.io/) is the inherent bootstrapping problem imposed by the fact that Terraform needs some kind of storage to store its [state](https://developer.hashicorp.com/terraform/language/state). 
