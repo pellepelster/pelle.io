@@ -4,8 +4,18 @@ set -eu -o pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+SITES="pelle.io solidblocks.de"
 SOLIDBLOCKS_SHELL_VERSION="v0.2.5"
 SOLIDBLOCKS_SHELL_CHECKSUM="d07eb3250f83ae545236fdd915feca602bdb9b683140f2db8782eab29c9b2c48"
+TEMP_DIR="${DIR}/.temp"
+
+mkdir -p "${TEMP_DIR}"
+
+function clean_temp_dir {
+  rm -rf "${TEMP_DIR}"
+}
+
+trap clean_temp_dir EXIT
 
 # self contained function for initial Solidblocks bootstrapping
 function bootstrap_solidblocks() {
@@ -24,7 +34,6 @@ function bootstrap_solidblocks() {
       rm -f "${temp_file}"
   )
 }
-
 
 function ensure_environment() {
 
@@ -50,28 +59,39 @@ function task_bootstrap() {
 }
 
 function hugo_wrapper {
+  local site="${1:-}"
+  shift || true
   (
-    cd "${DIR}/site"
-    hugo "$@"
+    cd "${DIR}/${site}"
+    hugo --themesDir "${DIR}/themes" --destination "${DIR}/output/${site}" "$@"
   )
 }
 
 function task_deploy {
-  echo "${DEPLOY_SSH_KEY}" > deploy_ssh
-  chmod 600 deploy_ssh
+  install -m 600 /dev/null "${TEMP_DIR}/deploy_ssh"
+  echo "${DEPLOY_SSH_KEY}" > "${TEMP_DIR}/deploy_ssh"
 
-  echo "put -R ${DIR}/site/public/* /" > deploy_batch
-  echo "exit" >> deploy_batch
-  sftp -o StrictHostKeyChecking=no -b deploy_batch -i deploy_ssh deploy@pelle.io
+  install -m 600 /dev/null "${TEMP_DIR}/deploy_batch"
+  for site in ${SITES}; do
+    echo "put -R ${DIR}/output/* public_html/" >> "${TEMP_DIR}/deploy_batch"
+  done
+  echo "exit" >> "${TEMP_DIR}/deploy_batch"
+
+  sftp -o StrictHostKeyChecking=no -b "${TEMP_DIR}/deploy_batch" -i "${TEMP_DIR}/deploy_ssh" deploy@pelle.io
 }
  
-function task_build {
-  hugo_wrapper
-  cp -v "${DIR}/.htaccess" "${DIR}/site/public/"
+function task_build_all {
+  for site in ${SITES}; do
+    hugo_wrapper "${site}"
+    cp -v "${DIR}/.htaccess" "${DIR}/output/${site}"
+  done
 }
 
 function task_serve {
-  hugo_wrapper "serve"
+  local site="${1:-}"
+  shift || true
+
+  hugo_wrapper "${site}" "serve"
 }
 
 function task_usage {
@@ -82,7 +102,6 @@ function task_usage {
 ARG=${1:-}
 shift || true
 
-# if we see the boostrap command assume solidshell is not yet initialized and skip environment setup
 case "${ARG}" in
   bootstrap) ;;
   *) ensure_environment ;;
@@ -90,8 +109,8 @@ esac
 
 case ${ARG} in
   bootstrap) task_bootstrap "$@" ;;
-  build) task_build ;;
-  serve) task_serve ;;
+  build-all) task_build_all ;;
+  serve) task_serve $@ ;;
   deploy) task_deploy ;;
   *) task_usage ;;
 esac

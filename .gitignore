@@ -5,3 +5,4 @@ site/public/
 .idea
 .solidblocks-shell/
 site/.hugo_build.lock
+/output/

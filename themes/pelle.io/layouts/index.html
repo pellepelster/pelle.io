@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <div role="main" class="container">
+    {{ with .Content }}
+    {{.}}
+    {{ end }}
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="posts-list">
+          {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+          {{ range $pag.Pages }}
+            {{ partial "post_preview" . }}
+          {{ end }}
+        </div>
+
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          <div class="d-flex justify-content-between">
+            {{ if .Paginator.HasPrev }}
+              <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/" class="btn btn-light" role="button">&larr; {{ i18n "newerPosts" }} &rarr;</a>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+              <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/" class="btn btn-light" role="button">{{ i18n "olderPosts" }} &rarr;</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}

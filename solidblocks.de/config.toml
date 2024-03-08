@@ -1,0 +1,17 @@
+baseURL = "https://solidblocks.de/"
+languageCode = "en-us"
+title = "solidblocks.de"
+theme = "pelle.io"
+
+[Params]
+logo = "img/logo.png"
+selfHosted = true
+homeTitle = "solidblocks"
+[Author]
+name = "pelle"
+email = "info@solidblocks.de"
+github = "pellepelster"
+phone = "+49 176 238 170 01"
+
+[markup.goldmark.renderer]
+unsafe = true

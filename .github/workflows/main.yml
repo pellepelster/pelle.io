@@ -20,7 +20,7 @@ jobs:
       run: ./do bootstrap
 
     - name: build
-      run: ./do build
+      run: ./do build-all
 
     - name: deploy
       env:
