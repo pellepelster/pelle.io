@@ -7,11 +7,14 @@ theme = "pelle.io"
 logo = "img/logo.png"
 selfHosted = true
 homeTitle = "solidblocks"
+customCss = "solidblocks.css"
+
 [Author]
 name = "pelle"
 email = "info@solidblocks.de"
-github = "pellepelster"
+github = "pellepelster/solidblocks"
 phone = "+49 176 238 170 01"
+jabber = "solidblocks@mailbox.org"
 
 [markup.goldmark.renderer]
 unsafe = true

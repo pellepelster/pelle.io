@@ -2,8 +2,8 @@
 title: "About Me"
 date: 2021-02-20T22:00:00+01:00
 draft: false
-hide_about_me: true
-hide_social: true
+hideAboutMe: true
+hideSocial: true
 ---
 
 I am a Freelance Software Developer and Infrastructure Specialist. 

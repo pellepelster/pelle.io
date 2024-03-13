@@ -55,7 +55,7 @@ function task_bootstrap() {
   bootstrap_solidblocks
   ensure_environment
 
-  software_ensure_hugo
+  software_ensure_hugo "0.123.8" "3e628b6ba89fef2976640af2eb7724babbf7839c0b97d04d2b6958d35027c88d"
 }
 
 function hugo_wrapper {
@@ -91,7 +91,7 @@ function task_serve {
   local site="${1:-}"
   shift || true
 
-  hugo_wrapper "${site}" "serve"
+  hugo_wrapper "${site}" "serve" --verbose --disableFastRender $@
 }
 
 function task_usage {
@@ -110,6 +110,7 @@ esac
 case ${ARG} in
   bootstrap) task_bootstrap "$@" ;;
   build-all) task_build_all ;;
+  hugo) hugo_wrapper $@ ;;
   serve) task_serve $@ ;;
   deploy) task_deploy ;;
   *) task_usage ;;

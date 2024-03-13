@@ -57,11 +57,11 @@
   <link rel="shortcut icon" type="image/png" href="/img/favicon.ico">
   <link rel="apple-touch-icon" href="/img/favicon.ico">
 
-  {{- if .Site.Params.useHLJS }}
-  <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />
-  {{- else -}}
-  <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
+  {{- if .Site.Params.customCss }}
+  <link rel="stylesheet" href="{{  printf "css/%s" .Site.Params.customCss | absURL }}" />
   {{- end -}}
+
+<link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/codeblock.css" | absURL }}" />
   
   <script type="text/javascript" src="{{ "js/tabs.js" | absURL }}"></script>

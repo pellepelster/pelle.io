@@ -1,0 +1,33 @@
+.navbar-custom .avatar-container .avatar-img-border {
+    border-radius: 0%;
+    box-shadow: none;
+}
+
+.navbar-custom .avatar-container .avatar-img {
+    border-radius: 0%;
+}
+
+.solidblocks-green {
+    color: #2ebc6f;
+}
+
+.solidblocks-orange {
+    color: #df964f;
+}
+
+.solidblocks-yellow {
+    color: #ebd129;
+}
+
+.feature-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}

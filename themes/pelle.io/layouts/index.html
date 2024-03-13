@@ -1,11 +1,13 @@
 {{ define "main" }}
   <div role="main" class="container">
-    {{ with .Content }}
-    {{.}}
-    {{ end }}
-
     <div class="row justify-content-center">
       <div class="col-lg-8 col-md-10">
+        {{ with .Content }}
+        <div class="well">
+          {{.}}
+        </div>
+        {{ end }}
+
         <div class="posts-list">
           {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
           {{ range $pag.Pages }}

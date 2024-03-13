@@ -78,3 +78,10 @@ id = "mastodon"
 url = "https://%s"
 title = "Mastodon"
 icon = "fab fa-mastodon"
+
+[[social_icons]]
+id = "jabber"
+url = "xmpp:%s"
+text = "%s"
+title = "Jaber"
+icon = "fa fa-message"
