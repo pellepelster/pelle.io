@@ -91,7 +91,7 @@ function task_serve {
   local site="${1:-}"
   shift || true
 
-  hugo_wrapper "${site}" "serve" --verbose --disableFastRender $@
+  hugo_wrapper "${site}" "serve" --buildDrafts --verbose --disableFastRender $@
 }
 
 function task_usage {
